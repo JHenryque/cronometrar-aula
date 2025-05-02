@@ -1,0 +1,17 @@
+.botao {
+  width: 270px;
+  height: 40px;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: rgb(43, 137, 226);
+  border: 0;
+  color: white;
+  margin-bottom: 10px;
+  margin: 2rem auto;
+}
+
+.botao:active {
+  background-color: #7ca6b7;
+  box-shadow: 2px 2px 4px #0000009f inset;
+}

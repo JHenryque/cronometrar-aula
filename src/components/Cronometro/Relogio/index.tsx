@@ -1,0 +1,16 @@
+import styles from "./Relogio.module.css";
+
+export default function Relogio() {
+  return (
+    <>
+      <span className={styles.relogio_dig}>0</span>
+      <span className={styles.relogio_dig}>0</span>
+      <span className={styles.dois_ponto}>:</span>
+      <span className={styles.relogio_dig}>0</span>
+      <span className={styles.relogio_dig}>0</span>
+      <span className={styles.dois_ponto}>:</span>
+      <span className={styles.relogio_dig}>0</span>
+      <span className={styles.relogio_dig}>0</span>
+    </>
+  );
+}
