@@ -33,6 +33,11 @@ function ItarefaReducer(
         ...state,
         status: action.payload,
       };
+    case "setTarefas":
+      return {
+        ...state,
+        tarefas: [...state.tarefas, action.payload],
+      };
     default:
       return state;
   }

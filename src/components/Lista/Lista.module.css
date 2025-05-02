@@ -1,26 +1,31 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
 }
 
 h2 {
-    color: white;
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
 }
 
 .estudo {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .listas {
-    background-color: #b8b5b5;
-    box-shadow: 0 0 8px 2px grey;
-    list-style: none;
-    padding: 20px 70px;
-    border-radius: 10px;
+  background-color: #b8b5b5;
+  box-shadow: 0 0 8px 2px grey;
+  list-style: none;
+  padding: 20px 70px;
+  border-radius: 10px;
+}
+
+.active {
+  border: 2px solid #10b153;
+  box-shadow: 0 0 8px 2px #b8b5b5;
 }

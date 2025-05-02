@@ -1,12 +1,15 @@
-import { UserContext } from "../../service/useCronometro";
 import styles from "./Botao.module.css";
 
-function Botao({ type }: { type?: "button" | "submit" | "reset" | undefined }) {
-  const { state } = UserContext();
-
+function Botao({
+  children,
+  type,
+}: {
+  children: React.ReactElement | string;
+  type?: "button" | "submit" | "reset" | undefined;
+}) {
   return (
     <button type={type} className={styles.botao}>
-      {state.button}
+      {children}
     </button>
   );
 }

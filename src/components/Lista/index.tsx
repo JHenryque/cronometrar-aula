@@ -9,7 +9,12 @@ function Lista() {
       <h2> Estudos do dia </h2>
       <ul className={styles.estudo}>
         {state.tarefas.map((item) => (
-          <Item key={item.id} tarefa={item.tarefa} tempo={item.tempo} />
+          <Item
+            key={item.id}
+            tarefa={item.tarefa}
+            tempo={item.tempo}
+            selecionado={item.selecionado}
+          />
         ))}
       </ul>
     </aside>
