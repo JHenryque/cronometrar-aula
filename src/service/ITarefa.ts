@@ -18,7 +18,22 @@ export interface ITarefaState {
 export const initialState: ITarefaState = {
   status: "idle",
   button: "Começar!",
-  tarefas: [
+  tarefas: localStorage.getItem("tarefas")
+    ? JSON.parse(localStorage.getItem("tarefas")!)
+    : [],
+};
+
+export type TarefaAction =
+  | { type: "setStatus"; payload: Status }
+  | { type: "setButton"; payload: ChildernButton }
+  | { type: "setTarefas"; payload: ITarefa };
+
+export interface ITarefaUserContext {
+  state: ITarefaState;
+  dispatch: React.Dispatch<TarefaAction>;
+}
+
+/*[
     {
       id: "1",
       tarefa: "React",
@@ -33,15 +48,4 @@ export const initialState: ITarefaState = {
       selecionado: true,
       completado: false,
     },
-  ],
-};
-
-export type TarefaAction =
-  | { type: "setStatus"; payload: Status }
-  | { type: "setButton"; payload: ChildernButton }
-  | { type: "setTarefas"; payload: ITarefa };
-
-export interface ITarefaUserContext {
-  state: ITarefaState;
-  dispatch: React.Dispatch<TarefaAction>;
-}
+  ] */

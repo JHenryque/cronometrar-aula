@@ -1,53 +1,62 @@
 .formulario {
-    width: 40%;
-    padding: 35px 3%;
-    margin-top: 100px;
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 20px;
-    box-shadow: 0 0 10px 4px #0000009F;
-    background: #38376d;
-    border-radius: 10px;
+  width: 40%;
+  padding: 35px 3%;
+  margin-top: 100px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: 0 0 10px 4px #0000009f;
+  background: #38376d;
+  border-radius: 10px;
 }
 
 .formulario label {
-    font-size: 1.5rem;
-    font-weight: 500;
-    font-family: sans-serif;
-    color: white;
-    align-items: center;
-    display: block;
-    margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: sans-serif;
+  color: white;
+  align-items: center;
+  display: block;
+  margin-bottom: 15px;
 }
 
-.formulario [name=tarefa]{  
-    width: 97%;
-    height: 40px;
-    border-radius: 10px;
-    padding-left: 15px;
-    font-size: 1.2rem;
-    box-shadow: 0 5px 20px #0707079f inset;
-    background-color: grey;
-    border: 0;
-    outline: 0;
-    color: #1a1a1a;
+.formulario [name="tarefa"] {
+  width: 97%;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px #0707079f inset;
+  background-color: grey;
+  border: 0;
+  outline: 0;
+  color: #1a1a1a;
 }
 
-.formulario [name=tarefa]::placeholder{
-    color: white;
+.formulario [name="tarefa"]::placeholder {
+  color: white;
 }
 
-.formulario [name=tempo]{ 
-    width: 30%;
-    height: 40px;
-    border-radius: 10px;
-    padding-left: 15px;
-    font-size: 1.2rem;
-    box-shadow: 0 5px 20px #0707079f inset;
-    background-color: grey;
-    border: 0;
-    outline: 0;
-    color: white;
+.formulario [name="tempo"] {
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  padding-left: 15px;
+  font-size: 1.2rem;
+  box-shadow: 0 5px 20px #0707079f inset;
+  background-color: grey;
+  border: 0;
+  outline: 0;
+  color: white;
+}
+
+.msg_error {
+  background-color: rgb(216, 125, 125);
+  color: rgb(126, 9, 9);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-align: center;
 }

@@ -34,6 +34,10 @@ function ItarefaReducer(
         status: action.payload,
       };
     case "setTarefas":
+      localStorage.setItem(
+        "tarefas",
+        JSON.stringify([...state.tarefas, action.payload])
+      );
       return {
         ...state,
         tarefas: [...state.tarefas, action.payload],
