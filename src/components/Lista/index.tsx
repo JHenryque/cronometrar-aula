@@ -9,20 +9,15 @@ function Lista() {
     const indf = state.tarefas.findIndex((item) => item.id === id);
     const idl = state.tarefas.map((item) => item.id)[indf];
 
-    const newTarefa = {
-      id,
-      tarefa: null,
-      tempo: null,
-      selecionado: !state.tarefas[indf].selecionado,
-      completado: false,
+    const newBoolean = {
+      id: idl,
+      selecionado: true,
     };
 
-    if (idl === id) {
-      dispatch({
-        type: "setTarefas",
-        payload: newTarefa,
-      });
-    }
+    dispatch({
+      type: "setSelected",
+      payload: newBoolean,
+    });
   }
 
   if (state.status === "fecthing") return <h2>Carregando...</h2>;

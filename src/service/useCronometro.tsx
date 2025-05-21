@@ -42,6 +42,23 @@ function ItarefaReducer(
         ...state,
         tarefas: [...state.tarefas, action.payload],
       };
+    case "setSelected":
+      return {
+        ...state,
+        tarefas: state.tarefas.map((item) => {
+          if (item.id === action.payload.id) {
+            return {
+              ...item,
+              selecionado: item.selecionado ? false : true,
+            };
+          } else {
+            return {
+              ...item,
+              selecionado: false,
+            };
+          }
+        }),
+      };
     default:
       return state;
   }

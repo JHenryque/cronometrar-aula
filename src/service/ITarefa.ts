@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface ITarefa {
   id: string;
   tarefa: string;
   tempo: string;
   selecionado: boolean;
-  completado: boolean;
+  completado?: boolean;
 }
 
 type Status = "idle" | "fecthing" | "ready" | "error";
@@ -26,7 +27,8 @@ export const initialState: ITarefaState = {
 export type TarefaAction =
   | { type: "setStatus"; payload: Status }
   | { type: "setButton"; payload: ChildernButton }
-  | { type: "setTarefas"; payload: ITarefa };
+  | { type: "setTarefas"; payload: ITarefa }
+  | { type: "setSelected"; payload: ITarefa["selecionado"] | any };
 
 export interface ITarefaUserContext {
   state: ITarefaState;
