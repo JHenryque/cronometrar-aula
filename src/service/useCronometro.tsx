@@ -59,6 +59,17 @@ function ItarefaReducer(
           }
         }),
       };
+    case "setRemoveCard":
+      localStorage.setItem(
+        "tarefas",
+        JSON.stringify(
+          state.tarefas.filter((item) => item.id !== action.payload)
+        )
+      );
+      return {
+        ...state,
+        tarefas: state.tarefas.filter((item) => item.id !== action.payload),
+      };
     default:
       return state;
   }

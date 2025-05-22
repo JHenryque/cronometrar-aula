@@ -6,16 +6,35 @@ export default function Relogio() {
 
   return (
     <>
-      <>
-        <span className={styles.relogio_dig}>0</span>
-        <span className={styles.relogio_dig}>0</span>
-        <span className={styles.dois_ponto}>:</span>
-        <span className={styles.relogio_dig}>0</span>
-        <span className={styles.relogio_dig}>0</span>
-        <span className={styles.dois_ponto}>:</span>
-        <span className={styles.relogio_dig}>0</span>
-        <span className={styles.relogio_dig}>0</span>
-      </>
+      {state.tarefas.find((item) => item.selecionado) ? (
+        state.tarefas.map((item) =>
+          item.selecionado ? (
+            <>
+              <span className={styles.relogio_dig}>{item.tempo[0]}</span>
+              <span className={styles.relogio_dig}>{item.tempo[1]}</span>
+              <span className={styles.dois_ponto}>:</span>
+              <span className={styles.relogio_dig}>{item.tempo[3]}</span>
+              <span className={styles.relogio_dig}>{item.tempo[4]}</span>
+              <span className={styles.dois_ponto}>:</span>
+              <span className={styles.relogio_dig}>{item.tempo[6]}</span>
+              <span className={styles.relogio_dig}>{item.tempo[7]}</span>
+            </>
+          ) : (
+            ""
+          )
+        )
+      ) : (
+        <>
+          <span className={styles.relogio_dig}>0</span>
+          <span className={styles.relogio_dig}>0</span>
+          <span className={styles.dois_ponto}>:</span>
+          <span className={styles.relogio_dig}>0</span>
+          <span className={styles.relogio_dig}>0</span>
+          <span className={styles.dois_ponto}>:</span>
+          <span className={styles.relogio_dig}>0</span>
+          <span className={styles.relogio_dig}>0</span>
+        </>
+      )}
     </>
   );
 }

@@ -28,7 +28,8 @@ export type TarefaAction =
   | { type: "setStatus"; payload: Status }
   | { type: "setButton"; payload: ChildernButton }
   | { type: "setTarefas"; payload: ITarefa }
-  | { type: "setSelected"; payload: ITarefa["selecionado"] | any };
+  | { type: "setSelected"; payload: ITarefa["selecionado"] | any }
+  | { type: "setRemoveCard"; payload: ITarefa["id"] | any };
 
 export interface ITarefaUserContext {
   state: ITarefaState;

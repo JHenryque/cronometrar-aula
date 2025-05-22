@@ -30,6 +30,7 @@ function Lista() {
           {state.tarefas.map((item) => (
             <Item
               key={item.id}
+              id={item.id}
               tarefa={item.tarefa}
               tempo={item.tempo}
               selecionado={item.selecionado}
