@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function CronometroRegressivo() {
-  const [tempoRestante, setTempoRestante] = useState(1 * 50 * 60); // 2 horas em segundos
+  const [tempoRestante, setTempoRestante] = useState(2 * 60); // 2 horas em segundos
   const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {

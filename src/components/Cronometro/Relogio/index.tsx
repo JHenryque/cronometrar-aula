@@ -6,19 +6,15 @@ export default function Relogio() {
   const { state } = UserContext();
   const tempo1 = state.tarefas.find((item) => item.selecionado)?.tempo; // parseInt(item.tempo.slice(1, 2)) *
 
-  const converterTempoParaSegundos = (tempo: string): number => {
+  const converterTempoParaSegundos = (tempo: string | any): number => {
     const [horas, minutos, segundos] = tempo.split(":").map(Number);
     return horas * 3600 + minutos * 60 + segundos;
   };
 
-  const [tempoStudo, setTempoStudo] = useState<number | any>(
-    converterTempoParaSegundos(tempo)
-  );
-
   const tempo = "02:00:00";
   const totalSegundos = converterTempoParaSegundos(tempo);
 
-  console.log(tempo1);
+  //console.log(tempoStudo);
 
   return (
     <>
