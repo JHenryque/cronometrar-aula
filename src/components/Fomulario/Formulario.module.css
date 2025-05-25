@@ -60,3 +60,9 @@
   font-size: 1rem;
   text-align: center;
 }
+
+@media (max-width: 700px) {
+  .formulario {
+    width: 85%;
+  }
+}

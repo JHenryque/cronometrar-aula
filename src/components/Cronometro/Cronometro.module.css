@@ -14,11 +14,22 @@
 }
 
 .cronometrowrape {
-  padding: 20px 3%;
+  padding: 2rem;
   margin-bottom: 25px;
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0 0 10px 4px #0000009f;
   background: #38376d;
   border-radius: 10px;
+}
+
+.botoes {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 385px) {
+  .cronometro p {
+    font-size: 1rem;
+  }
 }

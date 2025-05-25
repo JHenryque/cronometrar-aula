@@ -1,16 +1,62 @@
 span.relogio_dig {
-    font-size: 15rem;
-    border-radius: 15px;
-    box-shadow: 5px 10px 20px #0707079f inset;
-    background-color: grey;
-    border: 0;
-    padding: 0 1.7rem;
-    color: #ffff;
-
+  font-size: 15rem;
+  border-radius: 15px;
+  box-shadow: 5px 10px 20px #0707079f inset;
+  background-color: grey;
+  border: 0;
+  padding: 0 1.7rem;
+  color: #ffff;
 }
 
-span.dois_ponto{
-    color: white;
-    font-size: 18rem;
-    margin-top: -60px;
+span.dois_ponto {
+  color: white;
+  font-size: 18rem;
+  margin-top: -60px;
+}
+
+@media (max-width: 1320px) {
+  span.relogio_dig {
+    font-size: 10rem;
+  }
+
+  span.dois_ponto {
+    margin-top: -40px;
+    font-size: 11rem;
+  }
+}
+
+@media (max-width: 1010px) {
+  span.relogio_dig {
+    font-size: 5rem;
+    padding: 0 1rem;
+  }
+
+  span.dois_ponto {
+    margin-top: -25px;
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 710px) {
+  span.relogio_dig {
+    font-size: 3rem;
+    padding: 1.5rem 1rem;
+  }
+
+  span.dois_ponto {
+    margin-top: -1px;
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 385px) {
+  span.relogio_dig {
+    font-size: 3.3rem;
+    padding: 0 0.5rem;
+  }
+
+  span.dois_ponto {
+    margin-top: -10px;
+    font-size: 4rem;
+  }
 }

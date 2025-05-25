@@ -1,23 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { UserContext } from "../../../service/useCronometro";
 import styles from "./Relogio.module.css";
 import somAlarm from "../../../assets/sound-alerte.mp3"; // form "asd"
-import Botao from "../../Botao";
 
 export default function Relogio({
   isRunning,
   setIsRunning,
+  setIsStoped,
+  audioRef,
 }: {
   isRunning: boolean;
   setIsRunning: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsStoped: React.Dispatch<React.SetStateAction<boolean>>;
+  audioRef: React.RefObject<HTMLAudioElement | null>;
 }) {
   const { state } = UserContext();
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const tempo = state.tarefas.find((t) => t.selecionado);
 
   const [segundosRestantes, setSegundosRestantes] = useState(0);
-  const [isStoped, setIsStoped] = useState(false);
 
   useEffect(() => {
     if (tempo) {
@@ -48,11 +49,6 @@ export default function Relogio({
 
     return () => clearInterval(intervalo);
   }, [segundosRestantes, isRunning]);
-
-  function stopMusica() {
-    audioRef.current?.pause();
-    setIsStoped(false);
-  }
 
   const formatarTempo = (totalSegundos: number) => {
     const h = String(Math.floor(totalSegundos / 3600)).padStart(2, "0");
@@ -94,13 +90,6 @@ export default function Relogio({
           <span className={styles.relogio_dig}>0</span>
           <span className={styles.relogio_dig}>0</span>
         </>
-      )}
-      {isStoped === true ? (
-        <Botao type="button" handlerSubmit={stopMusica}>
-          Stop
-        </Botao>
-      ) : (
-        ""
       )}
     </>
   );
