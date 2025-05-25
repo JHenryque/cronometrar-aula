@@ -14,7 +14,7 @@ span.dois_ponto {
   margin-top: -60px;
 }
 
-@media (max-width: 1320px) {
+@media screen and (max-width: 1320px) {
   span.relogio_dig {
     font-size: 10rem;
   }
@@ -25,7 +25,7 @@ span.dois_ponto {
   }
 }
 
-@media (max-width: 1010px) {
+@media screen and (max-width: 1010px) {
   span.relogio_dig {
     font-size: 5rem;
     padding: 0 1rem;
@@ -37,26 +37,26 @@ span.dois_ponto {
   }
 }
 
-@media (max-width: 710px) {
+@media screen and (max-width: 710px) {
   span.relogio_dig {
     font-size: 3rem;
-    padding: 1.5rem 1rem;
-  }
-
-  span.dois_ponto {
-    margin-top: -1px;
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 457px) {
-  span.relogio_dig {
-    font-size: 3.3rem;
-    padding: 0 0.5rem;
+    padding: 0.5rem 1rem;
   }
 
   span.dois_ponto {
     margin-top: -10px;
     font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  span.relogio_dig {
+    font-size: 3rem;
+    padding: 0 0.5rem;
+  }
+
+  span.dois_ponto {
+    margin-top: -5px;
+    font-size: 3rem;
   }
 }
