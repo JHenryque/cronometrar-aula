@@ -8,9 +8,7 @@ function Formulario() {
   const [tempo, setTempo] = useState("");
   const [msg, setMsg] = useState("");
 
-  const { state, dispatch } = UserContext();
-
-  console.log(state.tarefas);
+  const { dispatch } = UserContext();
 
   function handlerSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,7 +32,6 @@ function Formulario() {
       setTarefa("");
       setTempo("");
       setMsg("");
-      dispatch({ type: "setStatus", payload: "fecthing" });
     }
     dispatch({ type: "setStatus", payload: "ready" });
   }

@@ -1,36 +1,84 @@
-import { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef, useState } from "react";
 import { UserContext } from "../../../service/useCronometro";
 import styles from "./Relogio.module.css";
+import somAlarm from "../../../assets/sound-alerte.mp3"; // form "asd"
+import Botao from "../../Botao";
 
-export default function Relogio() {
+export default function Relogio({
+  isRunning,
+  setIsRunning,
+}: {
+  isRunning: boolean;
+  setIsRunning: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const { state } = UserContext();
-  const tempo1 = state.tarefas.find((item) => item.selecionado)?.tempo; // parseInt(item.tempo.slice(1, 2)) *
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const tempo = state.tarefas.find((t) => t.selecionado);
 
-  const converterTempoParaSegundos = (tempo: string | any): number => {
-    const [horas, minutos, segundos] = tempo.split(":").map(Number);
-    return horas * 3600 + minutos * 60 + segundos;
+  const [segundosRestantes, setSegundosRestantes] = useState(0);
+  const [isStoped, setIsStoped] = useState(false);
+
+  useEffect(() => {
+    if (tempo) {
+      const [horas, minutos, segundos] = tempo.tempo.split(":").map(Number);
+      setSegundosRestantes(horas * 3600 + minutos * 60 + segundos);
+    }
+  }, [tempo]);
+
+  useEffect(() => {
+    let intervalo = 0;
+    if (segundosRestantes <= 0) {
+      audioRef.current?.play();
+
+      setIsRunning(false);
+
+      if (audioRef.current?.play()) {
+        setIsStoped(true);
+      }
+
+      return () => clearInterval(intervalo);
+    }
+
+    if (isRunning) {
+      intervalo = setInterval(() => {
+        setSegundosRestantes((prev) => prev - 1);
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalo);
+  }, [segundosRestantes, isRunning]);
+
+  function stopMusica() {
+    audioRef.current?.pause();
+    setIsStoped(false);
+  }
+
+  const formatarTempo = (totalSegundos: number) => {
+    const h = String(Math.floor(totalSegundos / 3600)).padStart(2, "0");
+    const m = String(Math.floor((totalSegundos % 3600) / 60)).padStart(2, "0");
+    const s = String(totalSegundos % 60).padStart(2, "0");
+    return `${h}:${m}:${s}`;
   };
 
-  const tempo = "02:00:00";
-  const totalSegundos = converterTempoParaSegundos(tempo);
-
-  //console.log(tempoStudo);
+  const tempoFormatado = formatarTempo(segundosRestantes);
 
   return (
     <>
       {state.tarefas.find((item) => item.selecionado) ? (
         state.tarefas.map((itens) =>
           itens.selecionado ? (
-            <>
-              <span className={styles.relogio_dig}>{itens.tempo[0]}</span>
-              <span className={styles.relogio_dig}>{itens.tempo[1]}</span>
+            <div key={itens.id}>
+              <span className={styles.relogio_dig}>{tempoFormatado[0]}</span>
+              <span className={styles.relogio_dig}>{tempoFormatado[1]}</span>
               <span className={styles.dois_ponto}>:</span>
-              <span className={styles.relogio_dig}>{itens.tempo[3]}</span>
-              <span className={styles.relogio_dig}>{itens.tempo[4]}</span>
+              <span className={styles.relogio_dig}>{tempoFormatado[3]}</span>
+              <span className={styles.relogio_dig}>{tempoFormatado[4]}</span>
               <span className={styles.dois_ponto}>:</span>
-              <span className={styles.relogio_dig}>{itens.tempo[6]}</span>
-              <span className={styles.relogio_dig}>{itens.tempo[7]}</span>
-            </>
+              <span className={styles.relogio_dig}>{tempoFormatado[6]}</span>
+              <span className={styles.relogio_dig}>{tempoFormatado[7]}</span>
+              <audio ref={audioRef} src={somAlarm} preload="auto" />
+            </div>
           ) : (
             ""
           )
@@ -46,6 +94,13 @@ export default function Relogio() {
           <span className={styles.relogio_dig}>0</span>
           <span className={styles.relogio_dig}>0</span>
         </>
+      )}
+      {isStoped === true ? (
+        <Botao type="button" handlerSubmit={stopMusica}>
+          Stop
+        </Botao>
+      ) : (
+        ""
       )}
     </>
   );

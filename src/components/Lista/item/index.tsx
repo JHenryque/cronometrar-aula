@@ -16,7 +16,7 @@ export default function Item({
   selecionado,
   hendlerSelectTask,
 }: Props) {
-  const { dispatch } = UserContext();
+  const { state, dispatch } = UserContext();
 
   function clickremove(id: string) {
     if (window.confirm("Deseja remover?")) {
@@ -25,21 +25,22 @@ export default function Item({
         payload: id,
       });
     }
-    handleReload();
   }
-
-  const handleReload = () => {
-    window.location.reload();
-  };
 
   return (
     <li
       className={styles.listas + " " + (!selecionado ? "" : styles.active)}
       onClick={hendlerSelectTask}
     >
-      <div onClick={() => clickremove(id)}>
-        <p className={styles.close}>X</p>
-      </div>
+      {state.tarefas.some((item) =>
+        item.selecionado ? (item.id === id ? true : false) : false
+      ) ? (
+        <div onClick={() => clickremove(id)}>
+          <p className={styles.close}>X</p>
+        </div>
+      ) : (
+        ""
+      )}
       <h3>{tarefa}</h3>
       <span>{tempo}</span>
     </li>
