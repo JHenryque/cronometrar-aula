@@ -29,6 +29,7 @@ export default function Relogio({
 
   useEffect(() => {
     let intervalo = 0;
+
     if (segundosRestantes <= 0) {
       audioRef.current?.play();
 
